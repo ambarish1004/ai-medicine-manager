@@ -17,16 +17,31 @@ export default function Recommendation() {
       <button onClick={fetchData}>Get Insights</button>
 
       {data && (
-        <div style={{marginTop: "20px"}}>
-            <h3>Insights</h3>
-            <p><b>Risk:</b> <span style={{color: data.risk === "High Risk" ? "red" : "green"}}>{data.risk}</span></p>
+        <div className="result">
+            <h3>AI Insights</h3>
+
+            <p>
+            <b>Risk:</b>{" "}
+            <span className={data.risk === "High Risk" ? "high" : "low"}>
+                {data.risk}
+            </span>
+            </p>
+
             <p><b>Reason:</b> {data.reason}</p>
             <p><b>Pattern:</b> {data.pattern}</p>
             <p><b>Adjustment:</b> {data.adjustment}</p>
             <p><b>Adherence Score:</b> {data.adherence_score}</p>
             <p><b>Recovery Advice:</b> {data.recovery_advice}</p>
-            <p><b>Conflicts:</b> {data.conflicts?.join(", ")}</p>
-            <p><b>Final Decision:</b> <b>{data.final_decision}</b></p>
+
+            <p>
+            <b>Conflicts:</b>{" "}
+            {data.conflicts?.length ? data.conflicts.join(", ") : "None"}
+            </p>
+
+            <p>
+            <b>Final Decision:</b> <br />
+            <strong>{data.final_decision}</strong>
+            </p>
         </div>
         )}
     </div>
