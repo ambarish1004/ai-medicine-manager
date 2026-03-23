@@ -20,7 +20,7 @@ export default function Recommendation() {
       {data && (
         <>
             <div className="result">
-            <h3>AI Insights</h3>
+            <h3 style={{marginBottom: "10px"}}>📊 AI Insights</h3>
 
             <p>
                 <b>Risk:</b>{" "}

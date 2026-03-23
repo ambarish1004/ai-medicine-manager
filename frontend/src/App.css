@@ -8,33 +8,56 @@ body {
 
 /* Container */
 .container {
-  max-width: 880px;
+  max-width: 1100px;
   margin: auto;
   padding: 30px 20px;
 }
 
-/* Title */
-h1 {
+/* Header */
+.header {
   text-align: center;
-  font-size: 26px;
   margin-bottom: 30px;
-  font-weight: 600;
 }
 
-/* Section Titles */
-h2 {
-  font-size: 16px;
-  margin-bottom: 12px;
-  color: #475569;
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  color: #64748b;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Left / Right */
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Cards */
 .card {
   background: #ffffff;
   padding: 18px;
-  margin-bottom: 18px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
+}
+
+/* Section Titles */
+h2 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #475569;
 }
 
 /* Inputs */
@@ -50,7 +73,7 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: #4f46e5;
   background: #fff;
 }
 
@@ -79,13 +102,12 @@ button:hover {
   border: 1px solid #e5e7eb;
 }
 
-/* Text spacing */
 .result p {
   margin: 6px 0;
   font-size: 14px;
 }
 
-/* Risk Colors */
+/* Risk */
 .high {
   color: #dc2626;
   font-weight: 600;
@@ -96,9 +118,66 @@ button:hover {
   font-weight: 600;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  .container {
-    padding: 15px;
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
+}
+
+/* Navbar */
+.navbar {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar h2 {
+  cursor: pointer;
+}
+
+.navbar button {
+  margin-left: 10px;
+  width: auto;
+  padding: 6px 12px;
+  background: transparent;
+  color: #1e293b;
+}
+
+.navbar button:hover {
+  background: #f1f5f9;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  min-height: calc(100vh - 60px);
+  padding: 15px;
+}
+
+.sidebar p {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.sidebar p:hover {
+  background: #f1f5f9;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 20px;
 }
