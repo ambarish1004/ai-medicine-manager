@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getRecommendation } from "../api";
+import AdherenceChart from "./AdherenceChart";
 
 export default function Recommendation() {
   const [id, setId] = useState("");
@@ -17,14 +18,15 @@ export default function Recommendation() {
       <button onClick={fetchData}>Get Insights</button>
 
       {data && (
-        <div className="result">
+        <>
+            <div className="result">
             <h3>AI Insights</h3>
 
             <p>
-            <b>Risk:</b>{" "}
-            <span className={data.risk === "High Risk" ? "high" : "low"}>
+                <b>Risk:</b>{" "}
+                <span className={data.risk === "High Risk" ? "high" : "low"}>
                 {data.risk}
-            </span>
+                </span>
             </p>
 
             <p><b>Reason:</b> {data.reason}</p>
@@ -34,15 +36,20 @@ export default function Recommendation() {
             <p><b>Recovery Advice:</b> {data.recovery_advice}</p>
 
             <p>
-            <b>Conflicts:</b>{" "}
-            {data.conflicts?.length ? data.conflicts.join(", ") : "None"}
+                <b>Conflicts:</b>{" "}
+                {data.conflicts?.length ? data.conflicts.join(", ") : "None"}
             </p>
 
             <p>
-            <b>Final Decision:</b> <br />
-            <strong>{data.final_decision}</strong>
+                <b>Final Decision:</b> <br />
+                <strong>{data.final_decision}</strong>
             </p>
-        </div>
+            </div>
+
+            {data.adherence_score !== undefined && (
+            <AdherenceChart score={data.adherence_score} />
+            )}
+        </>
         )}
     </div>
   );

@@ -5,7 +5,7 @@ import Recommendation from "./Recommendation";
 export default function Dashboard() {
   return (
     <div className="container">
-      <h1>💊 AI Medicine Manager</h1>
+      <h1>Medicine Manager</h1>
 
       <div className="card">
         {/* <h2>Add Medicine</h2> */}

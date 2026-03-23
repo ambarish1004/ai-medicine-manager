@@ -16,9 +16,9 @@ export default function AddMedicine() {
   return (
     <div>
       <h2>Add Medicine</h2>
-      <input placeholder="Name" onChange={e => setForm({...form, name: e.target.value})}/>
-      <input placeholder="Dosage" onChange={e => setForm({...form, dosage: e.target.value})}/>
-      <input placeholder="Time (HH:MM)" onChange={e => setForm({...form, time: e.target.value})}/>
+      <input placeholder="Enter medicine name" onChange={e => setForm({...form, name: e.target.value})}/>
+      <input placeholder="Dosage e.g. 500mg" onChange={e => setForm({...form, dosage: e.target.value})}/>
+      <input placeholder="Time (HH:MM) e.g. 08:00" onChange={e => setForm({...form, time: e.target.value})}/>
       <button onClick={handleSubmit}>Add</button>
     </div>
   );
