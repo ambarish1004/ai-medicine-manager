@@ -3,6 +3,8 @@ from app.services.scheduler import get_adaptive_time
 from app.services.context_engine import analyze_user_pattern
 from app.services.risk_model import predict_risk
 from app.services.adherence import calculate_adherence
+from app.services.recovery import missed_dose_advice
+from app.services.safety import check_conflicts
 from app import models
 
 def get_missed_count(feedbacks):
@@ -32,7 +34,11 @@ def smart_recommendation(medicine_id: int, db: Session):
     risk, reason= predict_risk(missed, avg_delay, side_effects)
     pattern = analyze_user_pattern(medicine_id, db)
     adjustment = get_adaptive_time(medicine_id, db)
-    
+    recovery = missed_dose_advice(avg_delay)
+    meds = db.query(models.Medicine).all()
+    med_names = [m.name for m in meds]
+
+    conflicts = check_conflicts(med_names)
     adherence_score = calculate_adherence(feedbacks)
 
     # Final decision logic
@@ -51,5 +57,7 @@ def smart_recommendation(medicine_id: int, db: Session):
         "adherence_score": adherence_score,
         "pattern": pattern,
         "adjustment": adjustment,
+        "recovery_advice": recovery,
+        "conflicts": conflicts,
         "final_decision": final
     }
